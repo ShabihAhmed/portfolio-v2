@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shabih Ahmed - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+        :root {
+            /* Navy blue derived from your suit */
+            --primary: #1e2a38; 
+            --secondary: #3498db;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section (The "More Professional" Look) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 10%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 85vh;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(30, 42, 56, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #2c3e50;
+        }
+
+        /* Image Styling */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+       .hero-image img {
+            width: 380px;
+            height: 380px;
+            object-fit: cover;
+            
+            /* THIS LINE FIXES THE HEAD CUT-OFF */
+            object-position: top center; 
+            
+            border-radius: 50%; 
+            border: 8px solid var(--white);
+            box-shadow: var(--shadow);
+            z-index: 10;
+        }
+
+        /* Decorative circle behind image */
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 2px dashed var(--secondary);
+            animation: spin 30s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+        }
+
+        /* Experience Cards */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exp-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .exp-company {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .exp-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: var(--bg-light);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid #ddd;
+        }
+
+        /* Contact Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 10%;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 2rem;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-top: 2rem;
+            }
+
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hero-image::after {
+                width: 270px;
+                height: 270px;
+            }
+     /* Style for the Download Resume button in Nav */
+        .nav-links .nav-btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-left: 20px;
+            transition: background 0.3s;
+        }
+
+        .nav-links .nav-btn:hover {
+            background-color: var(--primary); /* Turns dark blue on hover */
+            color: var(--white);
+        }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <nav>
+        <div class="logo">Shabih Ahmed</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            
+            <a href="Resume.pdf" download class="nav-btn">Download Resume</a>
+        </div>
+    </nav>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Shabih Ahmed</h1>
+            <h2>Administrator & MERN Stack Developer</h2>
+            <p>
+                Dedicated professional combining expertise in administrative functions, quality assurance, and customer support. Skilled in MERN stack development and Python.
+            </p>
+            <div style="margin-bottom: 20px;">
+                <small>📍 Karachi, Sindh | 📧 Shabihahmed24@gmail.com</small>
+            </div>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <div class="hero-image">
+            <img src="profile.jpeg" alt="Shabih Ahmed">
+        </div>
+    </header>
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Customer Support</div>
+                        <div class="exp-company">Ibex (Walmart Voice)</div>
+                    </div>
+                    <div class="exp-date">Jan 2025 – Dec 2025</div>
+                </div>
+                <ul>
+                    <li>Handle customer queries with professionalism and efficiency.</li>
+                    <li>Maintain accurate records and support administrative tasks.</li>
+                    <li>Assist with scheduling, documentation, and issue resolution.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Sales Agent</div>
+                        <div class="exp-company">Spectrum & Vivint</div>
+                    </div>
+                    <div class="exp-date">Dec 2024 – June 2025</div>
+                </div>
+                <ul>
+                    <li>Performed outbound and inbound sales operations.</li>
+                    <li>Utilized FreshBooks for customer and billing management.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Sub Engineer</div>
+                        <div class="exp-company">SUPARCO</div>
+                    </div>
+                    <div class="exp-date">Dec 2019 - Dec 2024</div>
+                </div>
+                <ul>
+                    <li>Conducted inspections, audits, and compliance checks.</li>
+                    <li>Managed documentation, maintained filing systems, and supported project coordination.</li>
+                    <li>Prepared reports and assisted in workflow improvements.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" style="background-color: #f8f9fa;">
+        <h2 class="section-title">Key Projects</h2>
+        <div class="timeline">
+            <div class="exp-card" style="border-left-color: #27ae60;">
+                <div class="exp-header">
+                    <div class="exp-title">PakSAT-MM1 Application</div>
+                    <div class="exp-date">July 2021 – May 2024</div>
+                </div>
+                <p>Spearheaded the design and implementation of a Python-based application which significantly improved task tracking. Developed a user-friendly GUI to enhance accessibility and streamline workflow processes for the entire team.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Skills & Education</h2>
+        
+        <div class="skills-container">
+            <span class="skill-item">MERN Stack</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Microsoft Office</span>
+            <span class="skill-item">Customer Support</span>
+            <span class="skill-item">Sales & CRM</span>
+            <span class="skill-item">Administrative Support</span>
+            <span class="skill-item">WordPress</span>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <h3>Education</h3>
+            <p style="margin-top: 10px;">
+                <strong>Bachelors in Computer Science</strong> - Virtual University (2025 - Present)<br>
+                <strong>DAE</strong> - SUPARCO Institute (2019)
+            </p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <p style="margin: 20px 0;">Open for opportunities in Administration and Tech.</p>
+        <p>
+            <a href="mailto:Shabihahmed24@gmail.com">Shabihahmed24@gmail.com</a> <br> 
+            <a href="tel:+923090308081">+92 309 030 8081</a>
+        </p>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Shabih Ahmed</p>
+    </footer>
+
+</body>
+</html>
